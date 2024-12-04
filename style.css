@@ -1,0 +1,237 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+Typographic tweaks!
+3. Add accessible line-height
+4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+8. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  --Purple-100: hsl(254, 88%, 90%);
+  --Purple-500: hsl(256, 67%, 59%);
+  --Yellow-100: hsl(31, 66%, 93%);
+  --Yellow-500: hsl(39, 100%, 71%);
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 7%);
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgba(230, 230, 250, 0.678);
+  overflow-x: hidden;
+}
+
+.main-content {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  gap: 2rem;
+  padding: 3em;
+  grid-template: repeat(8, 1fr) / repeat(8, 1fr);
+  grid-template-areas:
+    "first first second second second second third third"
+    "first first second second second second third third"
+    "first first second second second second third third"
+    "first first second second second second third third"
+    "first first fourth fourth fifth fifth third third"
+    "first first fourth fourth fifth fifth third third"
+    "first first seventh seventh sixth sixth sixth sixth"
+    "first first seventh seventh sixth sixth sixth sixth";
+}
+
+.radius, .create-post, .write-content {
+  border-radius: 8px;
+}
+
+img {
+  display: flex;
+  width: 100%;
+}
+
+h1 {
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.first {
+  grid-area: first;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2em;
+}
+
+.create-post, .write-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2em;
+}
+
+
+.create-post {
+  background-color: var(--Yellow-100);
+}
+
+.write-content {
+  background-color: var(--Yellow-500);
+}
+
+.second {
+  grid-area: second;
+  background-color: var(--Purple-500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em 1em;
+  min-height: 55vh;
+  color: var(--White);
+}
+
+.second h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.second img {
+  width: 180px;
+}
+
+.second span {
+  color: var(--Yellow-500);
+}
+
+.third {
+  grid-area: third;
+  padding: 2em 0 2em 2em;
+  background-color: var(--Purple-100);
+}
+
+.fourth {
+  grid-area: fourth;
+  padding: 2em 0 2em 2em;
+  min-height: 45vh;
+  overflow: hidden;
+  background-color: var(--White);
+}
+
+.fourth img {
+  margin-left: 3rem;
+}
+
+.fifth {
+  grid-area: fifth;
+  padding: 2em 2em 0;
+  min-height: 45vh;
+  overflow: hidden;
+  background-color: var(--Yellow-500);
+}
+
+.sixth {
+  grid-area: sixth;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 2em;
+  align-items: center;
+  background-color: var(--Purple-500);
+}
+.sixth img {
+  max-width: 300px;
+}
+
+.seventh {
+  grid-area: seventh;
+  min-height: 45vh;
+  padding: 1rem;
+  background-color: var(--White);
+}
+
+.seventh h1 {
+  font-size: 4rem;
+}
+
+.seventh p {
+  margin-bottom: 2rem;
+}
+
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    grid-template-areas: "second" "fourth" "fifth" "third" "sixth" "seventh" "first";
+    overflow-x: hidden;
+  }
+
+  .second h1 {
+    font-size: 2.5rem;
+  }
+  .sixth {
+    grid-template-columns: 1fr;
+  }
+}
